@@ -89,11 +89,12 @@
 			});
 			
 			$.each($(".lpeople_a"), function( index, value ) {
+			    var tube = $(this).data('tube');
 				var fb = $(this).data('fb');
 				var insta = $(this).data('insta');
 				var id = $(this).attr('id');
 				var lang = $(this).data('lang');
-				get_info(fb, insta, id, lang);
+				get_info(fb, insta, id, lang, tube);
 			});
 		});
 		
@@ -130,11 +131,46 @@
 
 		return false;
 	}
-	
-	function get_info(fb, insta, id, lang){
+
+	function get_info(fb, insta, id, lang, tube){
 		
-		$.post(ajax_path,{fb:fb, insta:insta, lang:lang})
+		$.post(ajax_path,{fb:fb, insta:insta, lang:lang, tube:tube})
 		.done(function(data){
+		    console.log(data);
+						   if(data.fb != 'Not available'){
+							   var html = '<div class="stats pull-left">';
+							   html += '<p><span class="stats_network" data-conn="https://www.facebook.com/'+fb+'"><img src="http://www.thisisluvin.com/wp-content/uploads/2017/12/facebook.svg"></span></p>';
+							   html += '<p>'+data.fb+'</p>';
+							   html += '</div>';
+							   $("#"+id+" .stats_wrapper").append(html);
+						   }
+						   if(data.insta != 'Not available'){
+							    var html = '<div class="stats pull-right">';
+							   html += '<p><span class="stats_network" data-conn="https://www.instagram.com/'+insta+'"><img src="http://www.thisisluvin.com/wp-content/uploads/2017/12/instagram.svg"></span></p>';
+							   html += '<p>'+data.insta+'</p>';
+							   html += '</div>';
+							   $("#"+id+" .stats_wrapper").append(html);
+						   }
+						   if(data.tube != 'Not available'){
+							    var html = '<div class="stats pull-right">';
+							   html += '<p><span class="stats_network" data-conn="https://www.youtube.com/user/'+tube+'/"><img src="http://www.thisisluvin.com/wp-content/uploads/2017/12/youtube-2.svg"></span></p>';
+							   html += '<p>'+data.tube+'</p>';
+							   html += '</div>';
+							   $("#"+id+" .stats_wrapper").append(html);
+						   }
+						   $('.stats_network').on('click', function(){
+								var conn = $(this).data('conn');
+								window.open(conn);
+							});
+					   });
+		
+		return false;
+	}	
+	function get_info_old(fb, insta, id, lang, tube){
+		
+		$.post(ajax_path,{fb:fb, insta:insta, lang:lang, tube:tube})
+		.done(function(data){
+		    console.log(data);
 						   if(data.fb != 'Not available'){
 							   var html = '<div class="stats pull-left">';
 							   html += '<p><span class="stats_network" data-conn="https://www.facebook.com/'+fb+'">facebook</span></p>';

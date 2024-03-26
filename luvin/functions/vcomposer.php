@@ -24,16 +24,26 @@ function lovinpeople_func( $atts) { // New function parameter $content is added!
     	$pmeta = get_post_meta( get_the_ID() );
 		$fb = $pmeta['_facebook'][0];
 		$insta = $pmeta['_instagram'][0];
+		$youtube = get_field('wpt_lp_youtube_username');
 
 		?>
 		<div class="lp_column wmargin">
 			<div class="lpeople-img">
-            	<a class="lpeople_a" href="#" id="lp_<?php echo get_the_ID(); ?>" data-lang="<?php echo qtranxf_getLanguage(); ?>" data-fb="<?php echo $fb; ?>" data-insta="<?php echo $insta; ?>">
+            	<a class="lpeople_a" href="#" id="lp_<?php echo get_the_ID(); ?>" data-lang="<?php echo qtranxf_getLanguage(); ?>" data-fb="<?php echo $fb; ?>" data-insta="<?php echo $insta; ?>" data-tube="<?php echo $youtube; ?>">
 				<?php if ( has_post_thumbnail()) the_post_thumbnail('luvinpeople-thumb'); ?>
 				<div class="luvinpeople_hover">
-                	<div class="lp_name ">
+       
+	<?php 
+            if(strlen(get_the_title())>25):
+              $classs = "toptop";
+            else:
+              $classs = "";
+            endif;
+      ?>                	
+			<div class="lp_name <?php echo $classs; ?>">
                 		<?php the_title(); ?>
-                    </div>
+                        </div>                		
+
                     <div class="stats_wrapper">
                     	<div class="stats pull-left">
                         <?php if($hasFB){ ?>
@@ -43,12 +53,17 @@ function lovinpeople_func( $atts) { // New function parameter $content is added!
                         </div>
                         <div class="stats pull-right">
                         <?php if($hasInst){ ?>
-                        	<p><a href="https://www.instagram.com/<?php echo $insta; ?>" target="_blank"><span class="stats_network" data-conn="https://www.instagram.com/<?php echo $insta; ?>">instagram</span></a></p>
+                        	<p><a href="https://www.instagram.com/<?php echo $insta; ?>" target="_blank"><span class="stats_network" data-conn="https://www.instagram.com/<?php echo $insta; ?>"></span></a></p>
+<img src="http://www.thisisluvin.com/wp-content/uploads/2017/12/instagram.svg">
                             <p><?php echo $followers; ?></p>
                         <?php } ?>
                         </div>
+
+
+
                         <div class="clearfix"></div>
                     </div>
+
                 </div>
                 </a>
 			</div>

@@ -9,16 +9,19 @@ $tube = $_POST["tube"];
 if($tube != ''){
 
 	$params = array( 'sslverify' => false, 'timeout' => 60 );
-	$url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id='. $tube .'&key=AIzaSyDz2iGCmsfPSblRztiN3mOxY9oUK5nolz8';
-	
+	$url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername='. $tube .'&key=AIzaSyDz2iGCmsfPSblRztiN3mOxY9oUK5nolz8';
+	require_once( $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php' );
 	$youTubeData = wp_remote_get( $url, $params );
 	if ( is_wp_error( $youTubeData ) || $youTubeData[ 'response' ][ 'code' ] >= 400 ) {
 		return;
 	}
 	
 	$response = json_decode( $youTubeData[ 'body' ], true );
-	$viewsCount = intval( $response[ 'items' ][ 0 ][ 'statistics' ][ 'viewCount' ] );
+	$viewsCount_ = intval( $response[ 'items' ][ 0 ][ 'statistics' ][ 'viewCount' ] );
+	$viewsCount = number_format ($viewsCount_  , 0 , ' , ' ,  '.');
 
+} else {
+	$viewsCount = "Not available";
 }
 	
 if($fb != ''){
@@ -29,9 +32,11 @@ if($fb != ''){
 	if($likes == "" || $likes == "0") $likes = "Not available";
 	else {
 		if($lang == 'en')
-			$likes .= " followers";
+			//$likes .= " followers";
+			$likes .= "";
 		else
-			$likes .= " seguidores";
+			//$likes .= " seguidores";
+			$likes .= "";
 		$hasFB = true;
 	}
 }
@@ -48,9 +53,11 @@ if($insta != ''){
 	if($followers == "0") $followers = "Not available";
 	else{
 		if($lang == 'en')
-			$followers .= " followers";
+			//$followers .= " followers";
+			$followers .= "";
 		else
-			$followers .= " seguidores";
+			//$followers .= " seguidores";
+			$followers .= "";
 		$hasInst = true;
 	}
 }
