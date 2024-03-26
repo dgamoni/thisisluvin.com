@@ -44,7 +44,7 @@ if($tube != ''){
 	
 if($fb != ''){
 	$fb_data = getData($fb);
-	$likes = $fb_data['likes'];
+	$likes = $fb_data['fan_count'];
 	$likes = number_format ( $likes , 0 , "," , "." );
 	$hasFB = false;
 	if($likes == "" || $likes == "0") $likes = "Not available";
@@ -64,7 +64,8 @@ else{
 	
 if($insta != ''){	
 	$raw = file_get_contents('https://www.instagram.com/'.$insta);
-	preg_match('/\"followed_by\"\:\s?\{\"count\"\:\s?([0-9]+)/',$raw,$m);
+	//preg_match('/\"followed_by\"\:\s?\{\"count\"\:\s?([0-9]+)/',$raw,$m);
+	preg_match('/\"edge_followed_by\"\:\s?\{\"count\"\:\s?([0-9]+)/',$raw,$m);
 	$followers = intval($m[1]);
 	$followers = number_format ( $followers , 0 , "," , "." );
 	$hasInst = false;
@@ -101,7 +102,7 @@ function getData($username){
 	$fp = fopen($filename,'r');	
 	$access_token = fread ($fp, filesize ($filename));
 	fclose($fp);
-	$json = json_decode(file_get_contents("https://graph.facebook.com/".$username."?fields=likes&access_token=".$access_token),true);
+	$json = json_decode(file_get_contents("https://graph.facebook.com/".$username."?fields=fan_count&access_token=".$access_token),true);
 	if($json == NULL){
 		$app_id = '822894977819768';
 		$secret = '7975977f9281c39637da6ca7f7f8dba4';
@@ -111,7 +112,7 @@ function getData($username){
 		fwrite($fp,$new_at);
 		fclose($fp);						
 		$access_token = $new_at;
-		$json = json_decode(file_get_contents("https://graph.facebook.com/".$username."?fields=likes&access_token=".$access_token),true);
+		$json = json_decode(file_get_contents("https://graph.facebook.com/".$username."?fields=fan_count&access_token=".$access_token),true);
 	} 
 	return $json;
 }
