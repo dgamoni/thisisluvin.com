@@ -1,0 +1,417 @@
+/*
+	Theme Name: Luvin Theme
+	Description: WordPress Theme for Luvin Website
+	Version: 1.0
+	Author: M:Eye Social
+	Author URI: http://www.meyesocial.com
+*/
+
+/*------------------------------------*\
+    MAIN
+\*------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Abel');
+/* global box-sizing */
+*,
+*:after,
+*:before {
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-font-smoothing:antialiased;
+	font-smoothing:antialiased;
+	text-rendering:optimizeLegibility;
+}
+/* html element 62.5% font-size for REM use */
+html {
+	font-size:62.5%;
+}
+body {
+	font:300 11px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color:#444;
+}
+/* clear */
+.clear:before,
+.clear:after {
+    content:' ';
+    display:table;
+}
+
+.clear:after {
+    clear:both;
+}
+.clear {
+    *zoom:1;
+}
+img {
+	max-width:100%;
+	vertical-align:bottom;
+}
+a {
+	color:#444;
+	text-decoration:none;
+}
+a:hover {
+	color:#444;
+}
+a:focus {
+	outline:0;
+}
+a:hover,
+a:active {
+	outline:0;
+}
+input:focus {
+	outline:0;
+	border:1px solid #04A4CC;
+}
+
+/*------------------------------------*\
+    STRUCTURE
+\*------------------------------------*/
+
+/* wrapper */
+.wrapper {
+	max-width:1280px;
+	width:95%;
+	margin:0 auto;
+	position:relative;
+}
+/* header */
+.header {
+
+}
+/* logo */
+.logo {
+
+}
+.logo-img {
+
+}
+/* nav */
+.nav {
+
+}
+/* sidebar */
+.sidebar {
+
+}
+/* footer */
+.footer {
+
+}
+
+/*------------------------------------*\
+    PAGES
+\*------------------------------------*/
+
+
+
+/*------------------------------------*\
+    IMAGES
+\*------------------------------------*/
+
+
+
+
+/*------------------------------------*\
+    RESPONSIVE
+\*------------------------------------*/
+
+@media only screen and (min-width:320px) {
+
+}
+@media only screen and (min-width:480px) {
+
+}
+@media only screen and (min-width:768px) {
+
+}
+@media only screen and (min-width:1024px) {
+
+}
+@media only screen and (min-width:1140px) {
+
+}
+@media only screen and (min-width:1280px) {
+
+}
+@media only screen and (-webkit-min-device-pixel-ratio:1.5),
+	   only screen and (min-resolution:144dpi) {
+
+}
+
+/*------------------------------------*\
+    MISC
+\*------------------------------------*/
+
+::selection {
+	background:#04A4CC;
+	color:#FFF;
+	text-shadow:none;
+}
+::-webkit-selection {
+	background:#04A4CC;
+	color:#FFF;
+	text-shadow:none;
+}
+::-moz-selection {
+	background:#04A4CC;
+	color:#FFF;
+	text-shadow:none;
+}
+
+/*------------------------------------*\
+    WORDPRESS CORE
+\*------------------------------------*/
+
+.alignnone {
+	margin:5px 20px 20px 0;
+}
+.aligncenter,
+div.aligncenter {
+	display:block;
+	margin:5px auto 5px auto;
+}
+.alignright {
+	float:right;
+	margin:5px 0 20px 20px;
+}
+.alignleft {
+	float:left;
+	margin:5px 20px 20px 0;
+}
+a img.alignright {
+	float:right;
+	margin:5px 0 20px 20px;
+}
+a img.alignnone {
+	margin:5px 20px 20px 0;
+}
+a img.alignleft {
+	float:left;
+	margin:5px 20px 20px 0;
+}
+a img.aligncenter {
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+.wp-caption {
+	background:#FFF;
+	border:1px solid #F0F0F0;
+	max-width:96%;
+	padding:5px 3px 10px;
+	text-align:center;
+}
+.wp-caption.alignnone {
+	margin:5px 20px 20px 0;
+}
+.wp-caption.alignleft {
+	margin:5px 20px 20px 0;
+}
+.wp-caption.alignright {
+	margin:5px 0 20px 20px;
+}
+.wp-caption img {
+	border:0 none;
+	height:auto;
+	margin:0;
+	max-width:98.5%;
+	padding:0;
+	width:auto;
+}
+.wp-caption .wp-caption-text,
+.gallery-caption {
+	font-size:11px;
+	line-height:17px;
+	margin:0;
+	padding:0 4px 5px;
+}
+.sticky {
+
+}
+.bypostauthor {
+
+}
+
+/*------------------------------------*\
+    PRINT
+\*------------------------------------*/
+
+@media print {
+	* {
+		background:transparent !important;
+		color:#000 !important;
+		box-shadow:none !important;
+		text-shadow:none !important;
+	}
+	a,
+	a:visited {
+		text-decoration:underline;
+	}
+	a[href]:after {
+		content:" (" attr(href) ")";
+	}
+	abbr[title]:after {
+		content:" (" attr(title) ")";
+	}
+	.ir a:after,
+	a[href^="javascript:"]:after,
+	a[href^="#"]:after {
+		content:"";
+	}
+	pre,blockquote {
+		border:1px solid #999;
+		page-break-inside:avoid;
+	}
+	thead {
+		display:table-header-group;
+	}
+	tr,img {
+		page-break-inside:avoid;
+	}
+	img {
+		max-width:100% !important;
+	}
+	@page {
+		margin:0.5cm;
+	}
+	p,
+	h2,
+	h3 {
+		orphans:3;
+		widows:3;
+	}
+	h2,
+	h3 {
+		page-break-after:avoid;
+	}
+}
+
+.services-section.wpb_row {
+margin: 0 auto !important;
+padding: 0;
+}
+
+.services-section .wpb_wrapper {
+position: relative;
+}
+
+.services-section .vc_custom_heading {
+position: absolute;
+left: 0;
+width: 100%;
+top: 50%;
+margin: 0;
+padding: 0 15px;
+-ms-transform: translate(0, -50%); /* IE 9 */
+    -webkit-transform: translate(0, -50%); /* Safari */
+    transform: translate(0, -50%);
+text-align: center !important;
+color: #fff;
+}
+.services-section .vc_custom_heading:after {
+content: '';
+display: block;
+position: absolute;
+top: 110%;
+left: 50%;
+width: 40px;
+height: 3px;
+margin-left: -20px;
+background-color: #002BC4;
+}
+
+.services-section .wpb_text_column {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+opacity: 0;
+background-color: rgba(0, 43, 196, 0.5);
+}
+.services-section .wpb_text_column .wpb_wrapper {
+position: absolute;
+left: 0;
+top: 50%;
+width: 100%;
+    padding: 0 25px;
+
+-ms-transform: translate(0, -50%); /* IE 9 */
+    -webkit-transform: translate(0, -50%); /* Safari */
+    transform: translate(0, -50%);
+}
+.services-section .wpb_text_column {
+color: #fff;
+font-size: 15px;
+}
+.services-section .vc_custom_heading,
+.services-section .wpb_text_column {
+-webkit-transition: all 0.5s; 
+    transition: all 0.5s;
+font-family: 'Abel', sans-serif !important;
+}
+.services-section .wpb_column:hover .vc_custom_heading {opacity: 0;}
+.services-section .wpb_column:hover .wpb_text_column {opacity: 1;}
+
+.services-section .vc_figure,
+.services-section .vc_single_image-wrapper,
+.services-section .vc_single_image-img {width: 100%}
+
+.services-section.wpb_row {
+margin-bottom: 0;
+}
+
+@media (max-width: 991px) {
+.services-section .vc_custom_heading {
+    font-size: 20px;
+}
+.services-section .wpb_text_column {
+font-size: 8px;
+}
+}
+@media (max-width: 768px) {
+.services-section .wpb_text_column {
+font-size: 14px;
+}
+#our-services {padding: 0;}
+}
+@media (max-width: 500px) {
+.services-section .wpb_text_column {
+font-size: 10px;
+}
+.services-section .wpb_text_column p {
+margin-bottom: 5px;
+}
+.services-section .wpb_text_column .wpb_wrapper {
+  padding: 0 7px;
+}
+  
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+.services-section .wpb_text_column .wpb_wrapper {
+padding: 0 15px;
+}
+.services-section .wpb_text_column {
+font-size: 10px;
+}
+}
+
+.luvinpeople .row {
+font-size: 0;
+}
+@media (min-width: 993px) {
+.luvinpeople .lp_column {
+width: 33.333333%;
+}
+}
+a.ss-instagram {
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    display: inline-block;
+    padding: 3px 6px;
+    margin-right: 12px;
+}

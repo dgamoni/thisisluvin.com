@@ -1,0 +1,92 @@
+<?php
+
+
+$fb = $_POST["fb"];
+$insta = $_POST["insta"];
+$lang = $_POST["lang"];
+$tube = $_POST["tube"];
+
+if($tube != ''){
+
+	$params = array( 'sslverify' => false, 'timeout' => 60 );
+	$url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id='. $tube .'&key=AIzaSyDz2iGCmsfPSblRztiN3mOxY9oUK5nolz8';
+	
+	$youTubeData = wp_remote_get( $url, $params );
+	if ( is_wp_error( $youTubeData ) || $youTubeData[ 'response' ][ 'code' ] >= 400 ) {
+		return;
+	}
+	
+	$response = json_decode( $youTubeData[ 'body' ], true );
+	$viewsCount = intval( $response[ 'items' ][ 0 ][ 'statistics' ][ 'viewCount' ] );
+
+}
+	
+if($fb != ''){
+	$fb_data = getData($fb);
+	$likes = $fb_data['likes'];
+	$likes = number_format ( $likes , 0 , "," , "." );
+	$hasFB = false;
+	if($likes == "" || $likes == "0") $likes = "Not available";
+	else {
+		if($lang == 'en')
+			$likes .= " followers";
+		else
+			$likes .= " seguidores";
+		$hasFB = true;
+	}
+}
+else{
+	$likes = "Not available";
+}
+	
+if($insta != ''){	
+	$raw = file_get_contents('https://www.instagram.com/'.$insta);
+	preg_match('/\"followed_by\"\:\s?\{\"count\"\:\s?([0-9]+)/',$raw,$m);
+	$followers = intval($m[1]);
+	$followers = number_format ( $followers , 0 , "," , "." );
+	$hasInst = false;
+	if($followers == "0") $followers = "Not available";
+	else{
+		if($lang == 'en')
+			$followers .= " followers";
+		else
+			$followers .= " seguidores";
+		$hasInst = true;
+	}
+}
+else{
+	$followers = "Not available";
+}
+
+$out = array();
+$out['fb'] = $likes;
+$out['insta'] = $followers;
+$out['tube'] = $viewsCount;
+header('Content-Type: application/json');
+echo json_encode($out);
+
+
+/*------------------------------------*\
+    Function to retrieve FB like count
+\*------------------------------------*/
+
+function getData($username){
+	$filename = dirname( __FILE__ ) . '/functions/access_token.data';
+	$fp = fopen($filename,'r');	
+	$access_token = fread ($fp, filesize ($filename));
+	fclose($fp);
+	$json = json_decode(file_get_contents("https://graph.facebook.com/".$username."?fields=likes&access_token=".$access_token),true);
+	if($json == NULL){
+		$app_id = '822894977819768';
+		$secret = '7975977f9281c39637da6ca7f7f8dba4';
+		$data = json_decode(file_get_contents("https://graph.facebook.com/v2.8/oauth/access_token?client_id=".$app_id."&client_secret=".$secret."&grant_type=client_credentials"));				
+		$new_at = $data->access_token;
+		$fp = fopen($filename,'w+');	
+		fwrite($fp,$new_at);
+		fclose($fp);						
+		$access_token = $new_at;
+		$json = json_decode(file_get_contents("https://graph.facebook.com/".$username."?fields=likes&access_token=".$access_token),true);
+	} 
+	return $json;
+}
+?>
