@@ -90,11 +90,12 @@
 			
 			$.each($(".lpeople_a"), function( index, value ) {
 			    var tube = $(this).data('tube');
+			    var tube2 = $(this).data('tube2');
 				var fb = $(this).data('fb');
 				var insta = $(this).data('insta');
 				var id = $(this).attr('id');
 				var lang = $(this).data('lang');
-				get_info(fb, insta, id, lang, tube);
+				get_info(fb, insta, id, lang, tube, tube2);
 			});
 		});
 		
@@ -132,9 +133,9 @@
 		return false;
 	}
 
-	function get_info(fb, insta, id, lang, tube){
+	function get_info(fb, insta, id, lang, tube, tube2){
 		
-		$.post(ajax_path,{fb:fb, insta:insta, lang:lang, tube:tube})
+		$.post(ajax_path,{fb:fb, insta:insta, lang:lang, tube:tube, tube2:tube2})
 		.done(function(data){
 		    console.log(data);
 						   if(data.fb != 'Not available'){
@@ -158,6 +159,13 @@
 							   html += '</div>';
 							   $("#"+id+" .stats_wrapper").append(html);
 						   }
+						   if(data.tube2 != 'Not available'){
+							    var html = '<div class="stats pull-right">';
+							   html += '<p><span class="stats_network" data-conn="https://www.youtube.com/channel/'+tube2+'/"><img src="http://www.thisisluvin.com/wp-content/uploads/2017/12/youtube-2.svg"></span></p>';
+							   html += '<p>'+data.tube2+'</p>';
+							   html += '</div>';
+							   $("#"+id+" .stats_wrapper").append(html);
+						   }						   
 						   $('.stats_network').on('click', function(){
 								var conn = $(this).data('conn');
 								window.open(conn);

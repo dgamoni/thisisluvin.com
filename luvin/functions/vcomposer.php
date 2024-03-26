@@ -25,11 +25,12 @@ function lovinpeople_func( $atts) { // New function parameter $content is added!
 		$fb = $pmeta['_facebook'][0];
 		$insta = $pmeta['_instagram'][0];
 		$youtube = get_field('wpt_lp_youtube_username');
-
+        $youtube2 = get_field('wpt_lp_youtube_chanel');
+        
 		?>
 		<div class="lp_column wmargin">
 			<div class="lpeople-img">
-            	<a class="lpeople_a" href="#" id="lp_<?php echo get_the_ID(); ?>" data-lang="<?php echo qtranxf_getLanguage(); ?>" data-fb="<?php echo $fb; ?>" data-insta="<?php echo $insta; ?>" data-tube="<?php echo $youtube; ?>">
+            	<a class="lpeople_a" href="#" id="lp_<?php echo get_the_ID(); ?>" data-lang="<?php echo qtranxf_getLanguage(); ?>" data-fb="<?php echo $fb; ?>" data-insta="<?php echo $insta; ?>" data-tube="<?php echo $youtube; ?>" data-tube2="<?php echo $youtube2; ?>">
 				<?php if ( has_post_thumbnail()) the_post_thumbnail('luvinpeople-thumb'); ?>
 				<div class="luvinpeople_hover">
        

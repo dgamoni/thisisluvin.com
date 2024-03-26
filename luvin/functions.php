@@ -503,6 +503,8 @@ function more_post_ajax(){
         'post_type' => 'ourprojects',
         'posts_per_page' => $ppp,
         'paged'    => $page,
+        //'offset'    => ($ppp-1)*$page,
+        'offset'    => (($ppp*$page)-2),
     );
 
     $loop = new WP_Query($args);
